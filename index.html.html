@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiply-Game_for_Children</title>
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .box {
+            height: 300px;
+            margin: 100px auto;
+            width: 350px;
+            border: 1px solid rgb(13, 204, 13);
+            background-color: #fff;
+            border-radius: 20px;
+            text-align: center;
+            font-family: Comic Sans MS, Comic Sans, cursive;
+        }
+
+        .question {
+            color: rgb(13, 204, 13);
+            font-size: 30px;
+            margin: 20px auto;
+        }
+
+        #score {
+            text-align: end;
+            margin: 10px 15px auto auto;
+            color: rgb(13, 204, 13);
+        }
+
+        #input {
+            width: 300px;
+            height: 35px;
+            box-sizing: border-box;
+            margin: 20px auto;
+            font-family: Comic Sans MS, Comic Sans, cursive;
+            border: 1px solid rgb(13, 204, 13);
+
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        #input:focus {
+            outline: none;
+        }
+
+        #submitBtn {
+            background-color: rgb(13, 204, 13);
+            color: aliceblue;
+
+            width: 300px;
+            height: 40px;
+            font-size: 25px;
+            font-weight: 200;
+            letter-spacing: 3px;
+            border: 1px solid white;
+            border-radius: 5px;
+            font-family: Comic Sans MS, Comic Sans, cursive;
+
+        }
+
+        .answer {
+
+            color: rgb(13, 204, 13);
+            font-size: 25px;
+            margin: 20px 0px;
+        }
+    </style>
+
+<body>
+    <div class="box">
+        <div id="score">score : 0</div>
+        <div class="question">Lorem ipsum dolor sit.</div>
+        <form action="" id="form">
+            <input type="text" id="input" placeholder="ENTER YOUR ANSWER...." autocomplete="off">
+        </form>
+        <button type="button" id="submitBtn">Submit</button>
+        <div class="answer"></div>
+
+    </div>
+
+    <script>
+        let score = 0;
+        let answer = document.querySelector(".answer");
+        let scoreEl = document.getElementById("score");
+        let submitBtn = document.getElementById("submitBtn");
+        let question = document.querySelector(".question");
+        let userAnswer;
+        let num1;
+        let num2;
+        function num() {
+            num1 = Math.ceil(Math.random() * 10);
+            num2 = Math.ceil(Math.random() * 10);
+            question.innerHTML = `What is ${num1} x ${num2} ?`
+        }
+
+        // console.log(num1);
+        // console.log(num2);
+        num();
+
+        submitBtn.addEventListener("click", () => {
+            userAnswer = document.getElementById("input").value;
+            userAnswer = Number.parseInt(userAnswer);
+            // console.log(typeof (userAnswer));
+
+            if (userAnswer == num1 * num2) {
+                score++;
+                scoreEl.innerHTML = `score : ${score}`
+                answer.innerHTML = `you are right!`
+                // console.log(num1*num2)
+                // console.log("right");
+            } else if (userAnswer !== num1 * num2) {
+                score--;
+                scoreEl.innerHTML = `score : ${score}`
+                answer.innerHTML = `sorry,you are wrong!`
+            }
+
+            document.getElementById("form").reset();
+            num();
+            event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
