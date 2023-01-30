@@ -18,6 +18,7 @@
             border: 1px solid rgb(13, 204, 13);
             background-color: #fff;
             border-radius: 20px;
+            box-shadow: 15px 10px 35px #aaa;
             text-align: center;
             font-family: Comic Sans MS, Comic Sans, cursive;
         }
@@ -78,7 +79,7 @@
         <div id="score">score : 0</div>
         <div class="question">Lorem ipsum dolor sit.</div>
         <form action="" id="form">
-            <input type="text" id="input" placeholder="ENTER YOUR ANSWER...." autocomplete="off">
+            <input type="text" id="input" placeholder="ENTER YOUR ANSWER...." autocomplete="off" autofocus>
         </form>
         <button type="button" id="submitBtn">Submit</button>
         <div class="answer"></div>
@@ -109,7 +110,7 @@
             userAnswer = Number.parseInt(userAnswer);
             // console.log(typeof (userAnswer));
 
-            if (userAnswer == num1 * num2) {
+            if (userAnswer === num1 * num2) {
                 score++;
                 scoreEl.innerHTML = `score : ${score}`
                 answer.innerHTML = `you are right!`
